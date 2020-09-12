@@ -1,0 +1,12 @@
+{
+  "name": "LearnMakingPropertyFinderApp",
+  "displayName": "LearnMakingPropertyFinderApp",
+  "expo": {
+    "name": "LearnMakingPropertyFinderApp",
+    "slug": "LearnMakingPropertyFinderApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
