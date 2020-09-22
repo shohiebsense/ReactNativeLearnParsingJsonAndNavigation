@@ -1,21 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+'use strict'
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ActivityIndicator,
+  Image,
+} from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import 'react-native-gesture-handler'
+import { createStackNavigator } from '@react-navigation/stack'
+import SearchPage from './SearchPage'
+import SearchResults from './SearchResults'
+
+const Stack = createStackNavigator()
+
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Property Finder" component={SearchPage} />
+      <Stack.Screen name="Results" component={SearchResults} />
+    </Stack.Navigator>
+  )
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 30,
+    marginTop: 65,
+    alignItems: 'stretch',
   },
-});
+  description: {
+    marginBottom: 20,
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#656565',
+    marginTop: 65,
+  },
+})
