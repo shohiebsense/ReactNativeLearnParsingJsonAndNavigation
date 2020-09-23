@@ -97,40 +97,35 @@ export default class SearchPage extends Component<Props> {
 
     const resultData = []
     Object.entries(data).forEach(([key, value], index) => {
-      var obj = {}
+      let obj = {}
       obj.title = key
       obj.data = []
       if (typeof value === 'object' && value !== null) {
-        console.log(`${key}`)
+        //console.log(`${key}`)
         //obj.value = []
-        var subObj = {}
         Object.entries(value).forEach(([childKey, childValue], jndex) => {
-          console.log(`index ke ${index}`)
-          subObj.key = childKey
+          //console.log(`index ke ${index}`)
           if (typeof childValue === 'object' && childValue !== null) {
-            var grandChildObj = {}
-            subObj.value = []
             Object.entries(childValue).forEach(
               ([grandChildKey, grandChildValue]) => {
-                grandChildObj.key = grandChildKey
-                // obj[index] = grandChildValue
-                console.log(`${grandChildKey}: ${grandChildValue}`)
+                obj.data.push(`${grandChildKey} ==> ${grandChildValue}`)
+                //console.log(`${grandChildKey}: ${grandChildValue}`)
               },
             )
           } else {
-            subObj.value = childValue
-            console.log(`${childKey}: ${childValue}`)
+            if (childKey === 'temp') {
+              console.log('this is temp!!!')
+            }
+            obj.data.push(`${childKey} : ${childValue}`)
+            //console.log(`${childKey}: ${childValue}`)
           }
-          //obj.value.push(subObj)
+          obj.data.join('')
         })
       } else {
-        let singleObj = value
-        obj.data.push(singleObj)
-        console.log(`${key}: ${value}`)
+        obj.data.push(value)
+        //console.log(`${key}: ${value}`)
       }
-      if (obj.data.length == 0) {
-        obj.data.push('test')
-      }
+
       resultData.push(obj)
     })
     console.log(resultData)

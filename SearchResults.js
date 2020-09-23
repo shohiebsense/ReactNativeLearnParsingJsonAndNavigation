@@ -13,28 +13,8 @@ import {
 import Constants from 'expo-constants'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-type Props = {}
-const DATA = [
-  {
-    title: 'coord',
-    data: ['Test'],
-  },
-  {
-    title: 'weather',
-    data: ['Test'],
-  },
-  {
-    title: 'base',
-    data: ['Stations'],
-  },
-  {
-    title: 'Main',
-    data: ['Test'],
-  },
-]
-
 const Item = ({ title }) => (
-  <View style={styles.item}>
+  <View style={styles.headerItem}>
     <Text style={styles.title}>{title}</Text>
   </View>
 )
@@ -52,9 +32,9 @@ export default class SearchResults extends Component<Props> {
 
   _renderItem = ({ item }) => {
     return (
-      <TouchableHighlight underlayColor="#dddddd">
+      <TouchableHighlight style={styles.item} underlayColor="#dddddd">
         <View>
-          <Text>{item}</Text>
+          <Text style={styles.itemText}>{item}</Text>
         </View>
       </TouchableHighlight>
     )
@@ -63,40 +43,9 @@ export default class SearchResults extends Component<Props> {
   render() {
     const data = this.props.route.params.data
     let resultData = []
-    let aa = Array.isArray(data)
-    console.log(`isarray + ${aa} length ${data.length}`)
-    // Object.entries(data).forEach(([key, value], index) => {
-    //   var obj = {}
-    //   obj.key = key
-    //   if (typeof value === 'object' && value !== null) {
-    //     console.log(`${key}`)
-    //     obj.value = []
-    //     var subObj = {}
-    //     Object.entries(value).forEach(([childKey, childValue], jndex) => {
-    //       console.log(`index ke ${index}`)
-    //       subObj.key = childKey
-    //       if (typeof childValue === 'object' && childValue !== null) {
-    //         var grandChildObj = {}
-    //         subObj.value = []
-    //         Object.entries(childValue).forEach(
-    //           ([grandChildKey, grandChildValue]) => {
-    //             grandChildObj.key = grandChildKey
-    //             obj[index] = grandChildValue
-    //             console.log(`${grandChildKey}: ${grandChildValue}`)
-    //           },
-    //         )
-    //       } else {
-    //         subObj.value = childValue
-    //         console.log(`${childKey}: ${childValue}`)
-    //       }
-    //       obj.value.push(subObj)
-    //     })
-    //   } else {
-    //     obj.value = value
-    //     console.log(`${key}: ${value}`)
-    //   }
-    //   resultData.push(obj)
-    // })
+    // let aa = Array.isArray(data)
+    // console.log(`isarray + ${aa} length ${data.length}`)
+
     return (
       <SafeAreaView style={styles.container}>
         <SectionList
@@ -115,12 +64,22 @@ export default class SearchResults extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Constants.statusBarHeight,
-    marginHorizontal: 16,
+    backgroundColor: '#fff',
   },
   header: {
-    fontSize: 32,
+    fontSize: 24,
+    color: '#2F4F4F',
+    paddingTop: 12,
     backgroundColor: '#fff',
+    borderTopColor: '#D3D3D3',
+    paddingHorizontal: 16,
+    borderTopWidth: 1,
+    borderStartColor: '#D3D3D3',
+    borderStartWidth: 1,
+    borderEndColor: '#D3D3D3',
+    borderEndWidth: 1,
+    textTransform: 'capitalize',
+    paddingBottom: 16,
   },
   thumb: {
     width: 80,
@@ -134,22 +93,22 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#dddddd',
   },
-  price: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#48BBEC',
-  },
-  title: {
-    fontSize: 20,
-    color: '#656565',
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    padding: 10,
+  headerItem: {
+    paddingHorizontal: 16,
+    backgroundColor: '#ffffff',
+    marginVertical: 8,
+    paddingTop: 16,
+    paddingBottom: 16,
   },
   item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
+    paddingHorizontal: 16,
+    backgroundColor: '#ffffff',
     marginVertical: 8,
+  },
+  itemText: {
+    color: '#708090',
+    fontSize: 18,
+    textTransform: 'capitalize',
+    lineHeight: 18,
   },
 })
