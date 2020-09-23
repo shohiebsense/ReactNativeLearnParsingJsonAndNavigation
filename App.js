@@ -22,7 +22,20 @@ function MyStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Property Finder" component={SearchPage} />
-      <Stack.Screen name="Results" component={SearchResults} />
+      <Stack.Screen
+        name="Results"
+        component={SearchResults}
+        options={{
+          title: 'Results',
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
     </Stack.Navigator>
   )
 }
